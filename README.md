@@ -1,2 +1,12 @@
 # Movie_Sentiment_Analysis
 Analyzing the sentiment of movie reviews using support vector classification, perceptrons, multilayer perceptrons, and principal component analysis.
+
+<i>Models were tuned for a variety of parameters to maximize accuracy and minimize runtime. All results listed is each model's best result.</i>   
+SVC accuracy: 53.47%  
+Perceptron accuracy: 82.26%  
+Multilayer perceptron: 85.28%
+PCA on Multilayer perceptron: 84.41%
+
+The model that performed the best in this experiment was the multilayer perceptron (MLP) using the "adam" activation function and no principal component analysis (PCA). Looking closer at each of the confusion matrices, there were some interesting similarities that emerged. In every model, the number of positive sentiment predictions outnumbered the number of negative predictions. This was most apparent in the SVC model, where it predicted a positive review 81.33% of the time (8133/10000). To this point, the number of false positives (predicting positive when the sentiment was actually negative) outnumbered the number of false negatives (predicting negative when the sentiment was actually positive) in each of the most accurate models. Initial analysis concluded that there was no bias within the dataset, with the average sentiment being exactly 50%. Thus, if these models were to limit their positive bias, their overall accuracy would increase significantly and become even more reliable for a number of sentiment prediction applications.
+
+Given the results of this experiment, I am confident some of these models would also perform well in the application of different sentiment predictions. Given some more training, it is very likely the MLP model with the "adam" activation function can achieve accuracy greater than 90%. This could involve tuning other parameters, such as the learning rate, the use of a warm start to reuse previous outputs, or applying an epsilon value for improved stability. However, improvements to the single-layer perceptron or other MLP with the "lbfgs" activation function could also be valuable, as these models also achieved initial accuracies over 80%. As a whole, MLP's are ideal for this kind of experiment where the weight of certain words plays a large part in the final sentiment. Therefore, as the number of epochs increases, these weights can be continually refined through backpropagation to make the best model possible.
